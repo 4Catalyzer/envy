@@ -1,7 +1,7 @@
 # @4c/envy
 
 ```js
-import * as Envy from '@4c/envy`
+import * as Envy from '@4c/envy'
 
 Envy.get('NODE_ENV') // 'production'
 
