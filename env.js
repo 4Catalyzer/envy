@@ -16,7 +16,7 @@ module.exports = {
   },
 
   has(key) {
-    return key in process.env;
+    return Object.prototype.hasOwnProperty.call(process.env, key);
   },
 
   get: getenv,
@@ -37,7 +37,7 @@ module.exports = {
     const config = getFromFile(env);
     const result = Object.create(null);
     Object.entries(config).forEach(([key, value]) => {
-      result[`${path}.${key}`] = value;
+      result[`${path}.${key}`] = JSON.stringify(value);
     });
   },
 };
