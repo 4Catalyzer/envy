@@ -1,14 +1,14 @@
-# @4c/envy
+# @4c/env
 
 ```js
-import * as Envy from '@4c/envy'
+import * as Env from '@4c/env'
 
-Envy.get('NODE_ENV') // 'production'
+Env.get('NODE_ENV') // 'production'
 
-Envy.get('NOT_SET_VAR') // Error
-Envy.get('NOT_SET_VAR', 'default_value') // 'default_value'
+Env.get('NOT_SET_VAR') // Error
+Env.get('NOT_SET_VAR', 'default_value') // 'default_value'
 
-Envy.load('test') // adds variables-test.env to process.env
+Env.load('test') // adds variables-test.env to process.env
 
-Envy.define('test') // returns variables-test.env mapped to an object keyed by process.env.[foo] for use in webpack
+Env.define('test') // returns variables-test.env mapped to an object keyed by process.env.[foo] for use in webpack
 ```

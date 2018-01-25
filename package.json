@@ -1,8 +1,8 @@
 {
-  "name": "@4c/envy",
+  "name": "@4c/env",
   "version": "1.0.0",
   "description": "Environment variable management and helpers",
-  "main": "envy.js",
+  "main": "env.js",
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
