@@ -39,5 +39,6 @@ module.exports = {
     Object.entries(config).forEach(([key, value]) => {
       result[`${path}.${key}`] = JSON.stringify(value);
     });
+    return result;
   },
 };
