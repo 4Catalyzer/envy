@@ -2,7 +2,14 @@ const dotenv = require('dotenv');
 const getenv = require('getenv');
 
 function getFromFile(env = 'test') {
-  const { parsed } = dotenv.load({ path: `variables-${env}.env` });
+  const path = `variables-${env.trim()}.env`;
+  const { parsed, error } = dotenv.load({ path });
+
+  if (error) {
+    const msg = error.message || 'EnvError: could not parse .env file';
+    error.message = `${msg}\n\n  attempted path: ${path}\n`;
+    throw error;
+  }
   return parsed;
 }
 
@@ -34,7 +41,7 @@ module.exports = {
   },
 
   define(env, path = 'process.env') {
-    const config = getFromFile(env);
+    const config = getFromFile(env) || {};
     const result = Object.create(null);
     Object.entries(config).forEach(([key, value]) => {
       result[`${path}.${key}`] = JSON.stringify(value);
