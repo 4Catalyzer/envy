@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const getenv = require('getenv');
 
-function getFromFile(env = 'test') {
+function loadFromFile(env = 'test') {
   const path = `variables-${env.trim()}.env`;
   const { parsed, error } = dotenv.load({ path });
 
@@ -32,8 +32,10 @@ module.exports = {
     delete process.env[key];
   },
 
+  loadFromFile,
+
   load(env, { force = true } = {}) {
-    const config = getFromFile(env);
+    const config = loadFromFile(env);
 
     Object.entries(config).forEach(([key, value]) => {
       if (force || !this.has(key)) process.env[key] = value;
@@ -41,7 +43,7 @@ module.exports = {
   },
 
   define(env, path = 'process.env') {
-    const config = getFromFile(env) || {};
+    const config = loadFromFile(env) || {};
     const result = Object.create(null);
     Object.entries(config).forEach(([key, value]) => {
       result[`${path}.${key}`] = JSON.stringify(value);
