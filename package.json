@@ -2,37 +2,83 @@
   "name": "@4c/env",
   "version": "1.2.0",
   "description": "Environment variable management and helpers",
-  "main": "env.js",
   "license": "MIT",
   "scripts": {
+    "build:es": "babel src -d es --env-name esm --ignore **/__tests__ --delete-dir-on-start -x .ts",
+    "build:lib": "babel src -d lib --ignore **/__tests__ --delete-dir-on-start -x .ts",
+    "build:types": "tsc --outDir lib && tsc --outDir es",
+    "build": "yarn build:lib && yarn build:es",
+    "eslint": "eslint . --ext .js,.ts,.tsx",
+    "format": "yarn eslint && yarn import-sort --write && yarn prettier --write",
+    "import-sort": "import-sort '**/src/**/*.{js,ts,tsx}' '!**/__generated__/*' '!**/*.d.ts'",
+    "lint": "tsc --noEmit && yarn eslint && yarn import-sort --list-different && yarn prettier --list-different",
     "precommit": "lint-staged",
-    "test": "eslint ."
+    "prepublishOnly": "yarn run build",
+    "prettier": "prettier --ignore-path .eslintignore '**/*.{json,css,md}'",
+    "test": "yarn lint"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
+  "publishConfig": {
+    "access": "public"
   },
+  "main": "lib/env.js",
+  "files": [
+    "CHANGELOG.md",
+    "lib",
+    "dist",
+    "es"
+  ],
   "prettier": {
     "printWidth": 79,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "importSort": {
+    ".ts, .tsx": {
+      "parser": "import-sort-style-4catalyzer/parser-ts",
+      "style": "import-sort-style-4catalyzer"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "import-sort --write",
+      "git add"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write --ignore-path .eslintignore",
+      "git add"
+    ]
   },
   "dependencies": {
     "dotenv": "^4.0.0",
     "getenv": "^0.7.0"
   },
   "devDependencies": {
-    "@qsi/babel-preset-qsi": "^0.6.2",
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.13.1",
-    "eslint-config-4catalyzer": "^0.3.3",
-    "eslint-config-prettier": "^2.9.0",
+    "@4c/babel-preset-4catalyzer": "^4.1.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/dotenv": "^6.1.0",
+    "@types/getenv": "^0.7.0",
+    "@types/node": "*",
+    "babel-core": "^7.0.0-bridge.0",
+    "eslint": "^5.12.0",
+    "eslint-config-4catalyzer": "^0.7.0",
+    "eslint-config-4catalyzer-typescript": "^0.8.1",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-prettier": "^2.4.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2"
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-typescript": "^1.0.0-rc.2",
+    "husky": "^1.1.2",
+    "import-sort-cli": "^5.2.0",
+    "import-sort-style-4catalyzer": "^4.3.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "typescript": "^3.2.2"
   }
 }
