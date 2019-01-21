@@ -34,7 +34,7 @@ export default {
 
   loadFromFile,
 
-  load(env: string | undefined, { force = true } = {}) {
+  load(env?: string, { force = true } = {}) {
     const config = loadFromFile(env);
 
     Object.entries(config).forEach(([key, value]) => {
@@ -42,7 +42,7 @@ export default {
     });
   },
 
-  define(env: string | undefined, path = 'process.env') {
+  define(env?: string, path = 'process.env') {
     const config = loadFromFile(env) || {};
     const result = Object.create(null);
     Object.entries(config).forEach(([key, value]) => {
