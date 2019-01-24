@@ -1,6 +1,6 @@
 {
   "name": "@4c/env",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Environment variable management and helpers",
   "license": "MIT",
   "scripts": {
