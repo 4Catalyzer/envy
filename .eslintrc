@@ -1,13 +1,12 @@
 {
-  "extends": [
-    "4catalyzer",
-    "prettier",
-    "prettier/flowtype"
-  ],
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
+  "extends": ["4catalyzer", "prettier","4catalyzer-typescript", "4catalyzer-jest"],
+  "env": {
+      "node": true
+  },
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "global-require": "off",
+    "import/no-dynamic-require": "off"
   }
 }
