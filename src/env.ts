@@ -13,7 +13,8 @@ function loadFromFile(env = 'test') {
   return parsed!; // if error is undefined, then parse is defined
 }
 
-export default {
+// add-modules-exports doesn't work with ts!?
+exports.default = {
   get NODE_ENV() {
     return process.env.NODE_ENV || 'development';
   },
@@ -51,3 +52,4 @@ export default {
     return result;
   },
 };
+module.exports = exports.default;
