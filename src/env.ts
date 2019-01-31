@@ -14,7 +14,7 @@ function loadFromFile(env = 'test') {
 }
 
 // FIXME: add-module-exports doesn't work with ts.
-modules.exports = {
+module.exports = {
   get NODE_ENV() {
     return process.env.NODE_ENV || 'development';
   },

@@ -1,4 +1,4 @@
-module.exports = api => ({
+module.exports = {
   presets: [
     '@babel/preset-typescript',
     [
@@ -8,4 +8,4 @@ module.exports = api => ({
       },
     ],
   ],
-});
+};
