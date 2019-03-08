@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build:lib": "babel src -d lib --ignore **/__tests__ --delete-dir-on-start -x .ts",
-    "build:types": "tsc --outDir lib",
+    "build:types": "tsc --outDir lib --emitDeclarationOnly",
     "build": "yarn build:lib && yarn build:types",
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "format": "yarn eslint && yarn import-sort --write && yarn prettier --write",
