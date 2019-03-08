@@ -1,7 +1,7 @@
 module.exports = {
   presets: [
     [
-      '@4c/4catalyzer',
+      '@4c',
       {
         target: 'node',
       },
