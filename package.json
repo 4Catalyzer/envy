@@ -44,10 +44,10 @@
     "getenv": "^1.0.0"
   },
   "devDependencies": {
-    "@4c/babel-preset": "^7.3.2",
+    "@4c/babel-preset": "^7.3.3",
     "@4c/tsconfig": "^0.3.1",
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.8.6",
     "@babel/preset-typescript": "^7.8.3",
     "@types/dotenv": "^6.1.1",
     "@types/node": "*",
@@ -56,13 +56,13 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "eslint": "^6.8.0",
     "eslint-config-4catalyzer": "^1.1.1",
-    "eslint-config-4catalyzer-typescript": "^1.1.6",
+    "eslint-config-4catalyzer-typescript": "^1.1.7",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.7",
+    "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.3"
   }
 }
