@@ -2,7 +2,20 @@
   "name": "@4c/env",
   "version": "1.2.6",
   "description": "Environment variable management and helpers",
+  "homepage": "https://github.com/4Catalyzer/env#readme",
+  "bugs": {
+    "url": "https://github.com/4Catalyzer/env/issues"
+  },
   "license": "MIT",
+  "author": "4Catalyzer",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/env.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4Catalyzer/env.git"
+  },
   "scripts": {
     "build:lib": "babel src -d lib --ignore **/__tests__ --delete-dir-on-start -x .ts",
     "build:types": "tsc --outDir lib --emitDeclarationOnly",
@@ -15,20 +28,6 @@
     "prettier": "prettier --ignore-path .eslintignore '**/*.{json,css,md}'",
     "test": "yarn lint"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "main": "lib/env.js",
-  "files": [
-    "CHANGELOG.md",
-    "lib",
-    "dist"
-  ],
-  "prettier": {
-    "printWidth": 79,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -37,6 +36,11 @@
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
     "*.{json,css,md}": "prettier --write --ignore-path .eslintignore"
+  },
+  "prettier": {
+    "printWidth": 79,
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "dependencies": {
     "@types/getenv": "^1.0.0",
@@ -64,5 +68,8 @@
     "lint-staged": "^10.1.2",
     "prettier": "^2.0.3",
     "typescript": "^3.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
